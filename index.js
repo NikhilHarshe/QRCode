@@ -1,15 +1,18 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./Databse/databse");
 const app = express();
-const PORT = 3000;
+
+dotenv.config();
+
+const PORT = process.env.PORT || 4000;
 
 app.use(express.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: "*",
     credentials: true,
   })
 );
